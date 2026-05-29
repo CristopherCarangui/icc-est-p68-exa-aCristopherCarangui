@@ -5,31 +5,23 @@ import models.League;
 public class LeagueController {
 
     /**
-     * FILA A - Implementar este metodo con Selection Sort ascendente.
-     * Ordena el arreglo de ligas de menor a mayor segun getTotalActiveGoals().
-     *
-     * Nombre exacto requerido: sortSelectionAsc
-     *
-     * @param leagues Arreglo de ligas a ordenar
-     * @return Arreglo ordenado
-     */
-    public League[] sortSelectionAsc(League[] leagues) {
-        // TODO: Implementar (solo si su fila es A)
-        throw new UnsupportedOperationException("Metodo sortSelectionAsc no implementado");
-    }
-
-    /**
      * FILA B - Implementar este metodo con Insertion Sort descendente.
      * Ordena el arreglo de ligas de mayor a menor segun getTotalActiveGoals().
      *
      * Nombre exacto requerido: sortInsertionDesc
      *
      * @param leagues Arreglo de ligas a ordenar
-     * @return Arreglo ordenado
      */
-    public League[] sortInsertionDesc(League[] leagues) {
-        // TODO: Implementar (solo si su fila es B)
-        throw new UnsupportedOperationException("Metodo sortInsertionDesc no implementado");
+    public void sortInsertionDesc(League[] leagues) {
+        for (int i = 1; i < leagues.length; i++) {
+            League valorLeague = leagues[i];
+            int j = i - 1;
+            while (j >= 0 && leagues[j].getTotalActiveGoals() < valorLeague.getTotalActiveGoals()) {
+                leagues[j - 1] = leagues[j];
+                j--;
+            }
+            leagues[j - 1] = leagues[j];
+        }
     }
 
     /**
@@ -47,8 +39,21 @@ public class LeagueController {
      * @return La liga encontrada, o null si no existe
      */
     public League binarySearchByTotalActiveGoals(League[] leagues, int totalActiveGoals) {
-        // TODO: Implementar
-        throw new UnsupportedOperationException("Metodo binarySearchByTotalActiveGoals no implementado");
+        int inicio = 0;
+        int fin = leagues.length - 1;
+        int medio = 0;
+        //while (inicio <= fin) {
+         //   medio = inicio + (fin - inicio) / 2;
+          //  if (leagues[medio].getTotalActiveGoals() == totalActiveGoals) {
+           //     return leagues[medio];
+            //} else if (leagues[medio].getTotalActiveGoals() > totalActiveGoals) {
+              //  return leagues[medio] + 1;
+           // } else {
+               // return leagues[medio] - 1;
+            //}
+
+        }
+        return null;
     }
 
     /**
@@ -57,6 +62,8 @@ public class LeagueController {
      * @param leagues Arreglo de ligas a imprimir
      */
     public void printLeagues(League[] leagues) {
-
+        for (League equipos : leagues) {
+            System.out.println(equipos);
+        }
     }
 }

@@ -1,3 +1,5 @@
+import moldels.*;
+import controllers.*;
 
 public class App {
 
@@ -151,6 +153,27 @@ public class App {
         }
 
         public static void main(String[] args) {
+                League[] arreglo = App.getLeagues();
+                LeagueController controller = new LeagueController();
+                System.out.println("===Arreglo Original===");
+                System.out.println(arreglo);
+                System.out.println("===Arreglo Ordenado===");
+                League copia= controller.sortInsertionDesc(arreglo);
+                System.out.println(copia);
+                System.out.println("===Busqueda Binaria ===");
+                League econtLeague = controller.binarySearchByTotalActiveGoals(arreglo, 67);
+                if(econtLeague == null){
+                        System.out.println("No se encontro un equipo con esos goles");
+                }else{
+                        System.out.println("Equipo = " + econtLeague);
+                }
+
+                League econtLeague2 = controller.binarySearchByTotalActiveGoals(arreglo, 40);
+                if(econtLeague2 == null){
+                        System.out.println("No se encontro un equipo con esos goles");
+                }else{
+                        System.out.println("Equipo = " + econtLeague2);
+                }
 
                 System.out.println(
                                 "Bienvenido al sistema de ligas de futbol. Por favor configure su fila en student.env y ejecute los tests automaticos para validar su implementacion.");
